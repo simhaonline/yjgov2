@@ -1,0 +1,68 @@
+# HTTP Server status
+[status]
+    #后台管理服务开关
+    admin = true
+    #Api服务开关
+    api = true
+
+#后台管理服务配置
+[admin]
+    #后台服务绑定地址和端口
+	address     = ":8088"
+	#后台服务静态资源目录
+	serverRoot  = "public"
+	#Swagger文件地址
+	swagger     = "http://localhost:8088/static/swagger/swagger.json"
+
+#API管理服务配置
+[api]
+    #Api服务绑定地址和端口
+	address     = ":8086"
+	#Api服务静态资源目录
+	serverRoot  = "public"
+	#jwt配置
+	[api.jwt]
+	    #过期时间
+	    timeout = 3600
+	    #token分割符
+	    Refresh = 1800
+	    #安全密钥
+	    encryptKey = "yjgoyjgoyjgoyjgo"
+
+# 日志配置
+[logger]
+    #日志保存路径
+    path        = "/tmp/log/yj-app"
+    #日志级别
+    level       = 0
+    #标准输出流
+    stdout      = true
+
+# 定时任务
+[task]
+    #并发任务数
+    workPoolSize = 10
+
+# 数据库配置
+[database]
+    #主数据库
+    master  = "root:password@tcp(127.0.0.1:3306)/yjgov2?charset=utf8"
+    #从数据库 如果为空则表示只使用主数据
+    slave = ""
+    #sql调试开关
+    debug = true
+    #sql日志目录
+    log = "/tmp/log/yj-app/sql"
+
+# 代码生成配置
+[gen]
+    #生成作者
+    author        = "yunjie"
+    #生成的模块名称
+    moduleName    = "module"
+    #生成的包名称
+    packageName   = "yj-app"
+    #是否去掉表前缀
+    autoRemovePre = true
+    #表前缀
+    tablePrefix   = "t_,sys_"

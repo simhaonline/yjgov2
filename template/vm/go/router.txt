@@ -1,0 +1,27 @@
+// ==========================================================================
+// 云捷GO自动生成路由代码，只生成一次，按需修改,再次生成不会覆盖.
+// 生成日期：{{.table.CreateTime}}
+// 生成路径: app/controller/{{.table.ModuleName}}/{{.table.BusinessName}}_router.go
+// 生成人：{{.table.FunctionAuthor}}
+// ==========================================================================
+package {{.table.ModuleName}}
+
+import (
+	"{{.table.PackageName}}/app/controller/system/config"
+	"{{.table.PackageName}}/app/service/middleware/auth"
+	"{{.table.PackageName}}/app/yjgframe/router"
+)
+
+//加载路由
+func init() {
+	// 参数路由
+	g1 := router.New("admin", "/{{.table.ModuleName}}/{{.table.BusinessName}}", auth.Auth)
+	g1.GET("/", "{{.table.ModuleName}}:{{.table.BusinessName}}:view", {{.table.BusinessName}}.List)
+	g1.POST("/list", "{{.table.ModuleName}}:{{.table.BusinessName}}:list", {{.table.BusinessName}}.ListAjax)
+	g1.GET("/add", "{{.table.ModuleName}}:{{.table.BusinessName}}:add", {{.table.BusinessName}}.Add)
+	g1.POST("/add", "{{.table.ModuleName}}:{{.table.BusinessName}}:add", {{.table.BusinessName}}.AddSave)
+	g1.POST("/remove", "{{.table.ModuleName}}:{{.table.BusinessName}}:remove", {{.table.BusinessName}}.Remove)
+	g1.GET("/edit", "{{.table.ModuleName}}:{{.table.BusinessName}}:edit", {{.table.BusinessName}}.Edit)
+	g1.POST("/edit", "{{.table.ModuleName}}:{{.table.BusinessName}}:edit", {{.table.BusinessName}}.EditSave)
+	g1.POST("/export", "{{.table.ModuleName}}:{{.table.BusinessName}}:export", {{.table.BusinessName}}.Export)
+}
