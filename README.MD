@@ -26,7 +26,7 @@
 >
 > 服务器监控     gopsutil       v2.19.12+incompatible   
 >
-> 若依前端组件   RuoYi           v4.1.0（做了部分适配GoFrame修改，命名为yf.js，不要跟原项目ry.js混用，文档可以通用）
+> 若依前端组件   RuoYi           v4.1.0（做了部分适配Go修改，命名为yf.js，不要跟原项目ry.js混用，文档可以通用）
 
 > 文档地址：正在编写
 >[http://www.yunjie.info](http://www.yunjie.info)
