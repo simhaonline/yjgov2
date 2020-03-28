@@ -50,8 +50,10 @@ require (
 	google.golang.org/appengine v1.6.5 // indirect
 	gopkg.in/flosch/pongo2.v3 v3.0.0-20141028000813-5e81b817a0c4 // indirect
 	gopkg.in/go-playground/validator.v9 v9.31.0 // indirect
-	xorm.io/builder v0.3.6
-	xorm.io/core v0.7.2-0.20190928055935-90aeac8d08eb
+	xorm.io/builder v0.3.7
+	xorm.io/cmd/xorm v0.0.0-20191108140657-006dbf24bb9b // indirect
+	xorm.io/core v0.7.2
+	xorm.io/xorm v1.0.1
 )
 
 go 1.13
