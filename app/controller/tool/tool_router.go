@@ -23,5 +23,4 @@ func init() {
 	g1.POST("/gen/column/list", "tool:gen:list", gen.ColumnList)
 	g1.GET("/gen/preview", "tool:gen:preview", gen.Preview)
 	g1.GET("/gen/genCode", "tool:gen:code", gen.GenCode)
-
 }

@@ -24,8 +24,8 @@
 	[api.jwt]
 	    #过期时间
 	    timeout = 3600
-	    #token分割符
-	    Refresh = 1800
+	    #刷新时间
+	    refresh = 1800
 	    #安全密钥
 	    encryptKey = "yjgoyjgoyjgoyjgo"
 

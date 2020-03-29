@@ -59,7 +59,7 @@ func (group *routerGroup) Handle(method, relativePath, permiss string, handlers 
 	r.HandlerFunc = handlers
 	group.Router = append(group.Router, &r)
 	if len(permiss) > 0 {
-		PermissionMap[relativePath] = permiss
+		PermissionMap[group.RelativePath+relativePath+relativePath] = permiss
 	}
 	return group
 }

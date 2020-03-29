@@ -53,7 +53,7 @@ require (
 	xorm.io/builder v0.3.7
 	xorm.io/cmd/xorm v0.0.0-20191108140657-006dbf24bb9b // indirect
 	xorm.io/core v0.7.2
-	xorm.io/xorm v1.0.1
+	xorm.io/xorm v1.0.1 // indirect
 )
 
-go 1.13
+go 1.14

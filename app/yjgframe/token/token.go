@@ -33,7 +33,7 @@ func New(id string) *YjgClaims {
 		timeOut = 3600
 	}
 
-	refresh := cfg.Instance().Api.Jwt.Timeout
+	refresh := cfg.Instance().Api.Jwt.Refresh
 
 	if refresh <= 0 {
 		refresh = timeOut / 2

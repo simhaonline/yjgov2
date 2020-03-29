@@ -12,7 +12,7 @@ import (
 )
 
 func GetOssUrl() string {
-	return "/static"
+	return GetValueByKey("sys.resource.url")
 }
 
 //根据键获取值
