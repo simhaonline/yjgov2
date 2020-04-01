@@ -7,7 +7,7 @@
 package {{.table.ModuleName}}
 
 import (
-	"{{.table.PackageName}}/app/controller/system/{{.table.BusinessName}}"
+	"{{.table.PackageName}}/app/controller/{{.table.ModuleName}}/{{.table.BusinessName}}"
 	"{{.table.PackageName}}/app/service/middleware/auth"
 	"{{.table.PackageName}}/app/yjgframe/router"
 )

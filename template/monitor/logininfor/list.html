@@ -112,7 +112,10 @@
                 {
                     field: 'login_time',
                     title: '登录时间',
-                    sortable: true
+                    sortable: true,
+                    formatter:function (value,row,index) {
+                        return rfc3339(value);
+                    }
                 }]
         };
         $.table.init(options);

@@ -2,6 +2,20 @@
  * 通用js方法封装处理
  */
 
+/**
+ * 将rfc3339格式转换成标准格式
+ * @param str
+ * @returns {string}
+ */
+function rfc3339(str) {
+	if(str=="0001-01-01T00:00:00Z"){
+		return ""
+	}
+	var date = new Date(str).toJSON();
+	var newDate = new Date(+new Date(date) + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '');
+	return newDate;
+}
+
 // 当前table相关信息
 var table = {
     config: {},

@@ -129,7 +129,10 @@
                 {
                     field: 'oper_time',
                     title: '操作时间',
-                    sortable: true
+                    sortable: true,
+                    formatter:function (value,row,index) {
+                        return rfc3339(value);
+                    }
                 },
                 {
                     title: '操作',

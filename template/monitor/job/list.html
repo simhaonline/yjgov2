@@ -114,7 +114,10 @@
                 {
                     field: 'create_time',
                     title: '创建时间',
-                    sortable: true
+                    sortable: true,
+                    formatter:function (value,row,index) {
+                        return rfc3339(value);
+                    }
                 },
                 {
                     title: '操作',

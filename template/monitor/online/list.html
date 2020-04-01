@@ -99,12 +99,18 @@
                     {
                         field: 'start_timestamp',
                         title: '登录时间',
-                        sortable: true
+                        sortable: true,
+                        formatter:function (value,row,index) {
+                            return rfc3339(value);
+                        }
                     },
                     {
                         field: 'last_access_time',
                         title: '最后访问时间',
-                        sortable: true
+                        sortable: true,
+                        formatter:function (value,row,index) {
+                            return rfc3339(value);
+                        }
                     },
                     {
                         title: '操作',
