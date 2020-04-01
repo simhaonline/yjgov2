@@ -5,7 +5,7 @@
 受之开源，回馈社区，本框架以Gin为web服务框架,xorm为数据库orm框架，继续沿用MIT开源协议，架构思路沿袭着若依的以辅助生成重复代码为主，不过度封装，生成的代码可以快速修改适应不同的需求，适应每个开发者自己的习惯和风格。所以命名为"云捷GO"（寓意：GO云原生业务快捷开发）
 
 ## GF版
->[https://github.com/zeroing-zy1/yjgo](https://github.com/zeroing-zy1/yjgo)
+[https://github.com/zeroing-zy1/yjgo](https://github.com/zeroing-zy1/yjgo)
 
 ## 核心技术及组件
 > web服务框架    github.com/gin-gonic/gin v1.6.1
@@ -26,7 +26,7 @@
 >
 > 服务器监控     gopsutil       v2.19.12+incompatible   
 >
-> 若依前端组件   RuoYi           v4.1.0（做了部分适配Go修改，命名为yf.js，不要跟原项目ry.js混用，文档可以通用）
+> 若依前端组件   RuoYi           v4.1.0
 
 > 文档地址：正在编写
 >[http://www.yunjie.info](http://www.yunjie.info)
