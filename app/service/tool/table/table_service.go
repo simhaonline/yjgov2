@@ -304,11 +304,15 @@ func InitColumnField(column *tableColumnModel.Entity, table *tableModel.Entity) 
 	if tableColumnModel.IsStringObject(dataType) {
 		//字段为字符串类型
 		column.GoType = "string"
-		columnLength := GetColumnLength(column.ColumnType)
-		if columnLength >= 500 {
+		if strings.EqualFold(dataType, "text") || strings.EqualFold(dataType, "tinytext") || strings.EqualFold(dataType, "mediumtext") || strings.EqualFold(dataType, "longtext") {
 			column.HtmlType = "textarea"
 		} else {
-			column.HtmlType = "input"
+			columnLength := GetColumnLength(column.ColumnType)
+			if columnLength >= 500 {
+				column.HtmlType = "textarea"
+			} else {
+				column.HtmlType = "input"
+			}
 		}
 	} else if tableColumnModel.IsTimeObject(dataType) {
 		//字段为时间类型
@@ -319,7 +323,7 @@ func InitColumnField(column *tableColumnModel.Entity, table *tableModel.Entity) 
 		column.HtmlType = "input"
 		// 如果是浮点型
 		tmp := column.ColumnType
-		if tmp == "float" {
+		if tmp == "float" || tmp == "double" {
 			column.GoType = "float64"
 		} else {
 			start := strings.Index(tmp, "(")
