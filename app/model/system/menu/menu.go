@@ -204,12 +204,12 @@ func SelectMenusByUserId(userId string) ([]EntityExtend, error) {
 		return nil, errors.New("获取数据库连接失败")
 	}
 
-	model := db.Table(TableName()).Alias("t")
+	model := db.Table(TableName()).Alias("m")
 	model.Join("LEFT", []string{"sys_role_menu", "rm"}, "m.menu_id = rm.menu_id")
 	model.Join("LEFT", []string{"sys_user_role", "ur"}, "rm.role_id = ur.role_id")
 	model.Join("LEFT", []string{"sys_role", "ro"}, "ur.role_id = ro.role_id")
 	model.Select("distinct m.menu_id, m.parent_id, m.menu_name, m.url, m.visible, ifnull(m.perms,'') as perms, m.target, m.menu_type, m.icon, m.order_num, m.create_time")
-	model.Where("ur.user_id = ? and  m.visible = 0  AND ro.status = 0")
+	model.Where("ur.user_id = ? and  m.visible = 0  AND ro.status = 0", userId)
 	model.OrderBy("m.parent_id, m.order_num ")
 	err := model.Find(&result)
 

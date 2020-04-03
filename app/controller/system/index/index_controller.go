@@ -11,6 +11,7 @@ import (
 	menuService "yj-app/app/service/system/menu"
 	userService "yj-app/app/service/system/user"
 	"yj-app/app/yjgframe/response"
+	"yj-app/app/yjgframe/utils/gconv"
 )
 
 //后台框架首页
@@ -34,7 +35,7 @@ func Index(c *gin.Context) {
 			}
 
 		} else {
-			tmp, err := menuService.SelectMenusByUserId(string(user.UserId))
+			tmp, err := menuService.SelectMenusByUserId(gconv.String(user.UserId))
 			if err == nil {
 				menus = tmp
 			}
