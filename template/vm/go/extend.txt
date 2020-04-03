@@ -75,7 +75,7 @@ func SelectListByPage(param *SelectPageReq) ([]Entity, *page.Paging, error) {
 
 	p = page.CreatePaging(param.PageNum, param.PageSize, int(total))
 
-	model.Limit(p.StartNum, p.Pagesize)
+	model.Limit(p.Pagesize, p.StartNum)
 
 	var result []Entity
     err = model.Find(&result)
