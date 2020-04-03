@@ -43,7 +43,7 @@ func SelectListByPage(param *SelectPageReq) ([]Entity, *page.Paging, error) {
 		return nil, p, errors.New("获取数据库连接失败")
 	}
 
-	model := db.Table("{{.table.TableName}} t")
+	model := db.Table("{{.table.TableName}}").Alias("t")
 
 	if param != nil { {{range $index, $column := .table.Columns}} {{if eq $column.IsQuery "1"}}
 		{{if eq $column.QueryType "LIKE"}}
