@@ -20,7 +20,7 @@
                             {{if eq .user.Avatar ""}}
                             <img class="img-circle img-lg" src="{{OssUrl}}/resource/img/profile.jpg"></p>
                             {{else}}
-                                <img class="img-circle img-lg" src="{{.user.Avatar}}"></p>
+                                <img class="img-circle img-lg" src="{{OssUrl}}{{.user.Avatar}}"></p>
                         {{end}}
                         <p><a href="javascript:avatar()">修改头像</a></p>
                     </div>

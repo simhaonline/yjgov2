@@ -275,7 +275,11 @@ func SignIn(loginnName, password string, c *gin.Context) (string, error) {
 	if !strings.EqualFold(user.Password, token) {
 		return "", errors.New("密码错误")
 	}
+	return SaveUserToSession(&user, c), nil
+}
 
+//保存用户信息到session
+func SaveUserToSession(user *userModel.Entity, c *gin.Context) string {
 	session := sessions.Default(c)
 	session.Set(model.USER_ID, user.UserId)
 	tmp, _ := json.Marshal(user)
@@ -283,7 +287,7 @@ func SignIn(loginnName, password string, c *gin.Context) (string, error) {
 	session.Save()
 	sessionId := session.SessionId()
 	SessionList.Store(sessionId, c)
-	return sessionId, nil
+	return sessionId
 }
 
 //清空用户菜单缓存
@@ -400,9 +404,8 @@ func UpdateProfile(profile *userModel.ProfileReq, c *gin.Context) error {
 	if err != nil {
 		return errors.New("保存数据失败")
 	}
-	session := sessions.Default(c)
 
-	session.Set(model.USER_SESSION_MARK, user)
+	SaveUserToSession(user, c)
 	return nil
 }
 
@@ -419,8 +422,7 @@ func UpdateAvatar(avatar string, c *gin.Context) error {
 		return errors.New("保存数据失败")
 	}
 
-	session := sessions.Default(c)
-	session.Set(model.USER_SESSION_MARK, user)
+	SaveUserToSession(user, c)
 	return nil
 }
 
@@ -469,8 +471,7 @@ func UpdatePassword(profile *userModel.PasswordReq, c *gin.Context) error {
 		return errors.New("保存数据失败")
 	}
 
-	session := sessions.Default(c)
-	session.Set(model.USER_SESSION_MARK, user)
+	SaveUserToSession(user, c)
 	return nil
 }
 
