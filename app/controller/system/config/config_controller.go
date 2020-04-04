@@ -139,7 +139,7 @@ func Export(c *gin.Context) {
 		return
 	}
 
-	response.SucessResp(c).SetBtype(model.Buniss_Other).SetData(url).WriteJsonExit()
+	response.SucessResp(c).SetBtype(model.Buniss_Other).SetMsg(url).WriteJsonExit()
 }
 
 //检查参数键名是否已经存在不包括本参数
