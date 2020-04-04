@@ -15,7 +15,6 @@ require (
 	github.com/fastly/go-utils v0.0.0-20180712184237-d95a45783239 // indirect
 	github.com/foolin/gin-template v0.0.0-20190415034731-41efedfb393b
 	github.com/fsnotify/fsnotify v1.4.9 // indirect
-	github.com/fvbock/endless v0.0.0-20170109170031-447134032cb6
 	github.com/gin-gonic/gin v1.6.1
 	github.com/go-ole/go-ole v1.2.4 // indirect
 	github.com/go-openapi/spec v0.19.7 // indirect
@@ -45,6 +44,7 @@ require (
 	github.com/tebeka/strftime v0.1.3 // indirect
 	golang.org/x/build v0.0.0-20190111050920-041ab4dc3f9d // indirect
 	golang.org/x/net v0.0.0-20200320220750-118fecf932d8 // indirect
+	golang.org/x/sync v0.0.0-20190911185100-cd5d95a43a6e
 	golang.org/x/sys v0.0.0-20200323222414-85ca7c5b95cd // indirect
 	golang.org/x/tools v0.0.0-20200324053659-5c746ccfa245 // indirect
 	google.golang.org/appengine v1.6.5 // indirect

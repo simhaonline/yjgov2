@@ -2,8 +2,8 @@ package server
 
 import (
 	gintemplate "github.com/foolin/gin-template"
-	"github.com/fvbock/endless"
 	"github.com/gin-gonic/gin"
+	"golang.org/x/sync/errgroup"
 	"html/template"
 	"log"
 	"net/http"
@@ -108,16 +108,19 @@ func (s *Server) Static(path string) *Server {
 }
 
 //启动服务
-func (s *Server) Start() {
-	endless.DefaultReadTimeOut = s.ReadTimeout
-	endless.DefaultWriteTimeOut = s.WriteTimeout
-	endless.DefaultMaxHeaderBytes = s.MaxHeaderBytes
-	server := endless.NewServer(s.Addr, s.Handler)
-	server.BeforeBegin = func(add string) {
-		log.Printf("[%v]Server listen: %v Actual pid is %d", s.ServerName, s.Addr, syscall.Getpid())
+func (s *Server) Start(g errgroup.Group) {
+
+	server := &http.Server{
+		Addr:           s.Addr,
+		Handler:        s.Handler,
+		ReadTimeout:    s.ReadTimeout,
+		WriteTimeout:   s.WriteTimeout,
+		MaxHeaderBytes: s.MaxHeaderBytes,
 	}
 
-	go func() error {
+	log.Printf("[%v]Server listen: %v Actual pid is %d", s.ServerName, s.Addr, syscall.Getpid())
+
+	g.Go(func() error {
 		return server.ListenAndServe()
-	}()
+	})
 }
