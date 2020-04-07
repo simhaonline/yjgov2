@@ -162,6 +162,7 @@ func SelectListAll(param *SelectPageReq) ([]Entity, error) {
 			model.Where("date_format(t.create_time,'%y%m%d') <= date_format(?,'%y%m%d') ", param.EndTime)
 		}
 	}
+	model.OrderBy("t.parent_id,t.order_num")
 	var result []Entity
 
 	err := model.Find(&result)
