@@ -21,17 +21,17 @@ type AddReq struct { {{range $index, $column := .table.Columns}}
 
 //修改页面请求参数
 type EditReq struct {
-      {{.table.PkColumn.GoField}}    {{.table.PkColumn.GoType}}  `p:"{{.table.PkColumn.HtmlField}}" v:"required#主键ID不能为空"` {{range $index, $column := .table.Columns}} {{if eq $column.IsEdit "1"}}
+      {{.table.PkColumn.GoField}}    {{.table.PkColumn.GoType}}  `form:"{{.table.PkColumn.HtmlField}}" binding:"required"` {{range $index, $column := .table.Columns}} {{if eq $column.IsEdit "1"}}
       {{$column.GoField}}  {{if eq $column.GoType "Time"}}time.Time{{else}}{{$column.GoType}}{{end}} `form:"{{$column.HtmlField}}" {{if eq $column.IsRequired "1"}}binding:"required不能为空"{{end}}` {{end}} {{end}}
 }
 
 //分页请求参数 {{$pkColumn := .table.PkColumn}}
 type SelectPageReq struct { {{range $index, $column := .table.Columns}} {{if eq $column.IsQuery "1"}}
 	{{$column.GoField}}  {{if eq $column.GoType "Time"}}time.Time{{else}}{{$column.GoType}}{{end}} `form:"{{$column.HtmlField}}"` //{{$column.ColumnComment}} {{end}} {{end}}
-	BeginTime  string `p:"beginTime"`  //开始时间
-	EndTime    string `p:"endTime"`    //结束时间
-	PageNum    int    `p:"pageNum"`    //当前页码
-	PageSize   int    `p:"pageSize"`   //每页数
+	BeginTime  string `form:"beginTime"`  //开始时间
+	EndTime    string `form:"endTime"`    //结束时间
+	PageNum    int    `form:"pageNum"`    //当前页码
+	PageSize   int    `form:"pageSize"`   //每页数
 }
 
 //根据条件分页查询数据
