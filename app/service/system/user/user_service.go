@@ -272,7 +272,7 @@ func SignIn(loginnName, password string, c *gin.Context) (string, error) {
 
 	token = gmd5.MustEncryptString(token)
 
-	if !strings.EqualFold(user.Password, token) {
+	if strings.Compare(user.Password, token) == -1 {
 		return "", errors.New("密码错误")
 	}
 	return SaveUserToSession(&user, c), nil
@@ -430,23 +430,23 @@ func UpdateAvatar(avatar string, c *gin.Context) error {
 func UpdatePassword(profile *userModel.PasswordReq, c *gin.Context) error {
 	user := GetProfile(c)
 
-	if strings.EqualFold(profile.OldPassword, "") {
+	if profile.OldPassword == "" {
 		return errors.New("旧密码不能为空")
 	}
 
-	if strings.EqualFold(profile.NewPassword, "") {
+	if profile.NewPassword == "" {
 		return errors.New("新密码不能为空")
 	}
 
-	if strings.EqualFold(profile.Confirm, "") {
+	if profile.Confirm == "" {
 		return errors.New("确认密码不能为空")
 	}
 
-	if strings.EqualFold(profile.NewPassword, profile.OldPassword) {
+	if profile.NewPassword == profile.OldPassword {
 		return errors.New("新旧密码不能相同")
 	}
 
-	if !strings.EqualFold(profile.Confirm, profile.NewPassword) {
+	if profile.Confirm != profile.NewPassword {
 		return errors.New("确认密码不一致")
 	}
 
@@ -454,7 +454,7 @@ func UpdatePassword(profile *userModel.PasswordReq, c *gin.Context) error {
 	token := user.LoginName + profile.OldPassword + user.Salt
 	token = gmd5.MustEncryptString(token)
 
-	if !strings.EqualFold(token, user.Password) {
+	if token != user.Password {
 		return errors.New("原密码不正确")
 	}
 
@@ -504,7 +504,7 @@ func CheckPassword(user *userModel.Entity, password string) bool {
 	token := user.LoginName + password + user.Salt
 	token = gmd5.MustEncryptString(token)
 
-	if strings.EqualFold(token, user.Password) {
+	if strings.Compare(token, user.Password) == 0 {
 		return true
 	} else {
 		return false

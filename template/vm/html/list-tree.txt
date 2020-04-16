@@ -64,7 +64,7 @@
     var addFlag = '{{printf `{{hasPermi .uid "%v:%v:add"}}` .table.ModuleName .table.BusinessName}}';
     var editFlag =' {{printf `{{hasPermi .uid "%v:%v:edit"}}` .table.ModuleName .table.BusinessName}}';
     var removeFlag = '{{printf `{{hasPermi .uid "%v:%v:remove"}}` .table.ModuleName .table.BusinessName}}';
-    {{range $index, $column := .table.Columns}} {{if ne $column.DictType ""}}var ${column.HtmlField}Datas = {{printf `{{getDictTypeData "%v"}}` $column.DictType}}; {{end}} {{end}}
+    {{range $index, $column := .table.Columns}} {{if ne $column.DictType ""}}var {{$column.HtmlField}}Datas = {{printf `{{getDictTypeData "%v"}}` $column.DictType}}; {{end}} {{end}}
     var prefix = ctx + "{{.table.ModuleName}}/{{.table.BusinessName}}";
 
     $(function () {

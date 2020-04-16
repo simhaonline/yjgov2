@@ -1,6 +1,9 @@
 package router
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/gin-gonic/gin"
+	"strings"
+)
 
 const (
 	GET     = "GET"
@@ -59,7 +62,11 @@ func (group *routerGroup) Handle(method, relativePath, permiss string, handlers 
 	r.HandlerFunc = handlers
 	group.Router = append(group.Router, &r)
 	if len(permiss) > 0 {
-		PermissionMap[group.RelativePath+relativePath+relativePath] = permiss
+		if strings.EqualFold(relativePath, "/") {
+			PermissionMap[group.RelativePath] = permiss
+		} else {
+			PermissionMap[group.RelativePath+relativePath] = permiss
+		}
 	}
 	return group
 }

@@ -34,7 +34,7 @@ func GetDictTypeRadio(dictType, name string, value interface{}) template.HTML {
 	htmlstr := ``
 
 	for _, item := range result {
-		if strings.EqualFold(item.DictValue, gconv.String(value)) {
+		if strings.Compare(item.DictValue, gconv.String(value)) == 0 {
 			htmlstr += `<div class="radio-box"><option value="` + item.DictValue + `">` + item.DictLabel + `</option>`
 			htmlstr += `<input type="radio" id="` + gconv.String(item.DictCode) + `" name="` + name + `" value="` + item.DictValue + `"
                            checked="checked">
@@ -69,7 +69,7 @@ func GetDictTypeSelect(dictType, id, name, className, value, emptyLabel, multipl
 	}
 
 	for _, item := range result {
-		if strings.EqualFold(item.DictValue, value) {
+		if strings.Compare(item.DictValue, value) == 0 {
 			htmlstr += `<option selected value="` + item.DictValue + `">` + item.DictLabel + `</option>`
 		} else {
 			htmlstr += `<option value="` + item.DictValue + `">` + item.DictLabel + `</option>`
